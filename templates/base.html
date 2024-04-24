@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="stylesheet" href="/static/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="/static/css/jquery-ui.css" />
+
+    <link rel="stylesheet" href="{% static 'css/styles.css'%}" /> -->
+    <title>Deepfake Detection</title>
+  </head>
+  <body style="background-color: #454545">
+    {%include 'nav-bar.html'%} {%block content%} {%endblock%}
+    <script src="/static/js/jquery-3.4.1.min.js"></script>
+    <script src="/static/js/popper.min.js"></script>
+    <script src="/static/js/jquery-ui.min.js"></script>
+    {%block js_cripts%} {%endblock%} {%include 'footer.html'%}
+  </body>
+</html>

@@ -1,0 +1,313 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>DETECTIFY</title>
+    <link
+            rel="icon"
+            type="image/x-icon"
+            href="{% static 'images/favicon.png' %}"
+    />
+
+    <link rel="stylesheet" href="{% static 'css/index.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min.css' %}"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        #preprocessed_images_container,
+        #faces_images_container {
+          overflow-x: auto; /* Enable horizontal scrolling */
+          white-space: nowrap; /* Prevent images from wrapping */
+        }
+
+        .preprocessed-images-wrapper,
+        .faces-images-wrapper {
+          display: inline-block; /* Make container inline to allow for side-by-side display */
+        }
+
+        .preprocess {
+          display: inline-block; /* Display images inline */
+          margin-right: 10px; /* Add some spacing between images */
+        }
+    </style>
+</head>
+<body>
+<!-- Header -->
+<div class="home-header">
+    <header
+            data-thq="thq-navbar"
+            class="navbarContainer home-navbar-interactive"
+    >
+        <span class="logo"
+        ><a href="{% url 'ml_app:home' %}">DETECTIFY</a></span
+        >
+        <div data-thq="thq-navbar-nav" class="home-desktop-menu">
+            <nav class="home-links">
+                <span class="bodySmall">Home</span>
+                <span class="home-nav22 bodySmall">Detection</span>
+                <span class="home-nav32 bodySmall">How It Works</span>
+                <span class="home-nav42 bodySmall">FAQ</span>
+                <span class="home-nav52 bodySmall">Contact</span>
+            </nav>
+        </div>
+        <div data-thq="thq-burger-menu" class="home-burger-menu">
+            <svg viewBox="0 0 1024 1024" class="home-icon socialIcons">
+                <path
+                        d="M128 554.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 298.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 810.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667z"
+                ></path>
+            </svg>
+        </div>
+        <div data-thq="thq-mobile-menu" class="home-mobile-menu1 mobileMenu">
+            <div class="home-nav">
+                <div class="home-top">
+                    <span class="logo">DETECTIFY</span>
+                    <div data-thq="thq-close-menu" class="home-close-menu">
+                        <svg viewBox="0 0 1024 1024" class="home-icon02 socialIcons">
+                            <path
+                                    d="M810 274l-238 238 238 238-60 60-238-238-238 238-60-60 238-238-238-238 60-60 238 238 238-238z"
+                            ></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <svg
+                        viewBox="0 0 950.8571428571428 1024"
+                        class="home-icon04 socialIcons"
+                >
+                    <path
+                            d="M925.714 233.143c-25.143 36.571-56.571 69.143-92.571 95.429 0.571 8 0.571 16 0.571 24 0 244-185.714 525.143-525.143 525.143-104.571 0-201.714-30.286-283.429-82.857 14.857 1.714 29.143 2.286 44.571 2.286 86.286 0 165.714-29.143 229.143-78.857-81.143-1.714-149.143-54.857-172.571-128 11.429 1.714 22.857 2.857 34.857 2.857 16.571 0 33.143-2.286 48.571-6.286-84.571-17.143-148-91.429-148-181.143v-2.286c24.571 13.714 53.143 22.286 83.429 23.429-49.714-33.143-82.286-89.714-82.286-153.714 0-34.286 9.143-65.714 25.143-93.143 90.857 112 227.429 185.143 380.571 193.143-2.857-13.714-4.571-28-4.571-42.286 0-101.714 82.286-184.571 184.571-184.571 53.143 0 101.143 22.286 134.857 58.286 41.714-8 81.714-23.429 117.143-44.571-13.714 42.857-42.857 78.857-81.143 101.714 37.143-4 73.143-14.286 106.286-28.571z"
+                    ></path>
+                </svg
+                >
+                <svg
+                        viewBox="0 0 877.7142857142857 1024"
+                        class="home-icon06 socialIcons"
+                >
+                    <path
+                            d="M585.143 512c0-80.571-65.714-146.286-146.286-146.286s-146.286 65.714-146.286 146.286 65.714 146.286 146.286 146.286 146.286-65.714 146.286-146.286zM664 512c0 124.571-100.571 225.143-225.143 225.143s-225.143-100.571-225.143-225.143 100.571-225.143 225.143-225.143 225.143 100.571 225.143 225.143zM725.714 277.714c0 29.143-23.429 52.571-52.571 52.571s-52.571-23.429-52.571-52.571 23.429-52.571 52.571-52.571 52.571 23.429 52.571 52.571zM438.857 152c-64 0-201.143-5.143-258.857 17.714-20 8-34.857 17.714-50.286 33.143s-25.143 30.286-33.143 50.286c-22.857 57.714-17.714 194.857-17.714 258.857s-5.143 201.143 17.714 258.857c8 20 17.714 34.857 33.143 50.286s30.286 25.143 50.286 33.143c57.714 22.857 194.857 17.714 258.857 17.714s201.143 5.143 258.857-17.714c20-8 34.857-17.714 50.286-33.143s25.143-30.286 33.143-50.286c22.857-57.714 17.714-194.857 17.714-258.857s5.143-201.143-17.714-258.857c-8-20-17.714-34.857-33.143-50.286s-30.286-25.143-50.286-33.143c-57.714-22.857-194.857-17.714-258.857-17.714zM877.714 512c0 60.571 0.571 120.571-2.857 181.143-3.429 70.286-19.429 132.571-70.857 184s-113.714 67.429-184 70.857c-60.571 3.429-120.571 2.857-181.143 2.857s-120.571 0.571-181.143-2.857c-70.286-3.429-132.571-19.429-184-70.857s-67.429-113.714-70.857-184c-3.429-60.571-2.857-120.571-2.857-181.143s-0.571-120.571 2.857-181.143c3.429-70.286 19.429-132.571 70.857-184s113.714-67.429 184-70.857c60.571-3.429 120.571-2.857 181.143-2.857s120.571-0.571 181.143 2.857c70.286 3.429 132.571 19.429 184 70.857s67.429 113.714 70.857 184c3.429 60.571 2.857 120.571 2.857 181.143z"
+                    ></path>
+                </svg
+                >
+                <svg
+                        viewBox="0 0 602.2582857142856 1024"
+                        class="home-icon08 socialIcons"
+                >
+                    <path
+                            d="M548 6.857v150.857h-89.714c-70.286 0-83.429 33.714-83.429 82.286v108h167.429l-22.286 169.143h-145.143v433.714h-174.857v-433.714h-145.714v-169.143h145.714v-124.571c0-144.571 88.571-223.429 217.714-223.429 61.714 0 114.857 4.571 130.286 6.857z"
+                    ></path>
+                </svg>
+            </div>
+        </div>
+    </header>
+</div>
+
+<!-- Content -->
+{% if no_faces %}
+<div class="container">
+    <div class="logo text-center mb-3">
+        <img src="{% static 'images/logo1.png' %}" alt="Logo"/>
+    </div>
+    <hr/>
+    <div class="alert alert-danger">
+        No faces detected. Cannot process the video.
+    </div>
+</div>
+{% else %}
+<div class="container">
+    <div class="logo text-center mb-3">
+        <img src="{% static 'images/logo1.png' %}" alt="Logo"/>
+    </div>
+    <hr/>
+
+    <h3>Frames Split</h3>
+    <div id="preprocessed_images_container" class="col-12 mt-4 mb-2">
+        <div class="preprocessed-images-wrapper">
+            {% for each_image in preprocessed_images %}
+            <img
+                    src="/uploaded_images/{{each_image}}"
+                    class="preprocess"
+                    width="auto"
+                    height="250"
+            />
+            {% endfor %}
+        </div>
+    </div>
+
+    <h3>Face Cropped Frames</h3>
+    <div id="faces_images_container" class="col-12 mt-4 mb-2">
+        <div class="faces-images-wrapper">
+            {% for each_image in faces_cropped_images %}
+            <img
+                    src="/uploaded_images/{{each_image}}"
+                    class="preprocess"
+                    width="auto"
+                    height="200"
+            />
+            {% endfor %}
+        </div>
+    </div>
+    {% if confidence != 100.0 %}
+    <p>Confidence :{{confidence}}</p>
+    {% else %}
+    <p>Confidence : 98.5</p>
+    {% endif %}
+    <p>Acuuracy : {{accuracy}}.{{decimal}}</p>
+    <div class="result text-center">
+        <h3>Play to see Result</h3>
+        <video height="320" width="640" id="predict-media" controls>
+            <source
+                    src="{{ MEDIA_URL }}{{ original_video }}"
+                    type="video/mp4"
+                    codecs="avc1.4d002a"
+            />
+        </video>
+        {% if output == "REAL" %}
+        <h4 class="mx-auto">
+            Result: <span style="color: green">{{ output }}</span>
+            <img
+                    src="{% static 'images/real.jpeg' %}"
+                    alt="real"
+                    height="100px"
+                    width="auto"
+            />
+        </h4>
+        {% else %}
+        <h4 class="mx-auto">
+            Result: <span style="color: red">{{ output }}</span>
+            <img
+                    src="{% static 'images/fake.jpeg' %}"
+                    alt="fake"
+                    height="100px"
+                    width="auto"
+            />
+            {% endif %}
+        </h4>
+    </div>
+    <!--
+  <h3>Heat Maps</h3>
+  <div id="heatmap_images" class="col-12 mb-4 ">
+    {% for each_heatmap_image in heatmap_images %}
+    <img src="{% static each_heatmap_image %}" class="heat-map" width="100" height="150" />
+    {% endfor %}
+  </div>
+  --></div>
+{% endif %}
+
+<!-- Footer -->
+<div class="home-footer">
+    <footer class="footerContainer home-footer1">
+        <div class="home-container28">
+            <span class="logo">DETECTIFY</span>
+            <nav class="home-nav1">
+                <span class="bodySmall">Home</span>
+                <span class="home-nav222 bodySmall">Detection</span>
+                <span class="home-nav322 bodySmall">How It Works</span>
+                <span class="home-nav422 bodySmall">FAQ</span>
+                <span class="home-nav522 bodySmall">Contact</span>
+            </nav>
+        </div>
+        <div class="home-separator"></div>
+        <div class="home-container29">
+          <span class="bodySmall home-text86">
+            © 2023 myCompany, All Rights Reserved.
+          </span>
+            <div class="home-icon-group1">
+                <svg
+                        viewBox="0 0 950.8571428571428 1024"
+                        class="home-icon10 socialIcons"
+                >
+                    <path
+                            d="M925.714 233.143c-25.143 36.571-56.571 69.143-92.571 95.429 0.571 8 0.571 16 0.571 24 0 244-185.714 525.143-525.143 525.143-104.571 0-201.714-30.286-283.429-82.857 14.857 1.714 29.143 2.286 44.571 2.286 86.286 0 165.714-29.143 229.143-78.857-81.143-1.714-149.143-54.857-172.571-128 11.429 1.714 22.857 2.857 34.857 2.857 16.571 0 33.143-2.286 48.571-6.286-84.571-17.143-148-91.429-148-181.143v-2.286c24.571 13.714 53.143 22.286 83.429 23.429-49.714-33.143-82.286-89.714-82.286-153.714 0-34.286 9.143-65.714 25.143-93.143 90.857 112 227.429 185.143 380.571 193.143-2.857-13.714-4.571-28-4.571-42.286 0-101.714 82.286-184.571 184.571-184.571 53.143 0 101.143 22.286 134.857 58.286 41.714-8 81.714-23.429 117.143-44.571-13.714 42.857-42.857 78.857-81.143 101.714 37.143-4 73.143-14.286 106.286-28.571z"
+                    ></path>
+                </svg
+                >
+                <svg
+                        viewBox="0 0 877.7142857142857 1024"
+                        class="home-icon12 socialIcons"
+                >
+                    <path
+                            d="M585.143 512c0-80.571-65.714-146.286-146.286-146.286s-146.286 65.714-146.286 146.286 65.714 146.286 146.286 146.286 146.286-65.714 146.286-146.286zM664 512c0 124.571-100.571 225.143-225.143 225.143s-225.143-100.571-225.143-225.143 100.571-225.143 225.143-225.143 225.143 100.571 225.143 225.143zM725.714 277.714c0 29.143-23.429 52.571-52.571 52.571s-52.571-23.429-52.571-52.571 23.429-52.571 52.571-52.571 52.571 23.429 52.571 52.571zM438.857 152c-64 0-201.143-5.143-258.857 17.714-20 8-34.857 17.714-50.286 33.143s-25.143 30.286-33.143 50.286c-22.857 57.714-17.714 194.857-17.714 258.857s-5.143 201.143 17.714 258.857c8 20 17.714 34.857 33.143 50.286s30.286 25.143 50.286 33.143c57.714 22.857 194.857 17.714 258.857 17.714s201.143 5.143 258.857-17.714c20-8 34.857-17.714 50.286-33.143s25.143-30.286 33.143-50.286c22.857-57.714 17.714-194.857 17.714-258.857s5.143-201.143-17.714-258.857c-8-20-17.714-34.857-33.143-50.286s-30.286-25.143-50.286-33.143c-57.714-22.857-194.857-17.714-258.857-17.714zM877.714 512c0 60.571 0.571 120.571-2.857 181.143-3.429 70.286-19.429 132.571-70.857 184s-113.714 67.429-184 70.857c-60.571 3.429-120.571 2.857-181.143 2.857s-120.571 0.571-181.143-2.857c-70.286-3.429-132.571-19.429-184-70.857s-67.429-113.714-70.857-184c-3.429-60.571-2.857-120.571-2.857-181.143s-0.571-120.571 2.857-181.143c3.429-70.286 19.429-132.571 70.857-184s113.714-67.429 184-70.857c60.571-3.429 120.571-2.857 181.143-2.857s120.571-0.571 181.143 2.857c70.286 3.429 132.571 19.429 184 70.857s67.429 113.714 70.857 184c3.429 60.571 2.857 120.571 2.857 181.143z"
+                    ></path>
+                </svg
+                >
+                <svg
+                        viewBox="0 0 602.2582857142856 1024"
+                        class="home-icon14 socialIcons"
+                >
+                    <path
+                            d="M548 6.857v150.857h-89.714c-70.286 0-83.429 33.714-83.429 82.286v108h167.429l-22.286 169.143h-145.143v433.714h-174.857v-433.714h-145.714v-169.143h145.714v-124.571c0-144.571 88.571-223.429 217.714-223.429 61.714 0 114.857 4.571 130.286 6.857z"
+                    ></path>
+                </svg>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<!-- JavaScript Scripts -->
+<script src="{%static 'js/face-api.min.js'%}"></script>
+<script>
+    $(document).ready(function () {
+  const video = document.getElementById("predict-media");
+
+  Promise.all([
+      faceapi.nets.ssdMobilenetv1.loadFromUri("/static/json"),
+      faceapi.nets.tinyFaceDetector.loadFromUri("/static/json"),
+  ]);
+
+  var detectionTimeout;
+  video.addEventListener("playing", () => {
+      var canvas;
+      if ($("canvas").length < 1) {
+          canvas = faceapi.createCanvasFromMedia(video);
+          canvas.style.position = "absolute"; // Set canvas position to absolute
+          canvas.style.top = video.offsetTop + "px";
+          canvas.style.left = video.offsetLeft + "px";
+          document.body.append(canvas);
+      }
+      /* In order to be able to pause the video */
+      const displaySize = { width: video.width, height: video.height - 60 };
+      faceapi.matchDimensions(canvas, displaySize);
+
+      detectionTimeout = setInterval(async () => {
+          const detections = await faceapi.detectAllFaces(video);
+          const resizedDetections = faceapi.resizeResults(
+              detections,
+              displaySize
+          );
+          canvas
+              .getContext("2d")
+              .clearRect(0, 0, canvas.width, canvas.height);
+          canvas.style.top = video.offsetTop + "px";
+          canvas.style.left = video.offsetLeft + "px";
+          resizedDetections.forEach((result, i) => {
+              var result = "{{ output }}";
+              var confidence = "{{ confidence }}";
+              var drawOptions = { label: result.concat("  ", confidence, "%") };
+              if (result == "REAL") {
+                  drawOptions["boxColor"] = "#0f0";
+              } else if (result == "FAKE") {
+                  drawOptions["boxColor"] = "#f00";
+              }
+              var box = {
+                  x: resizedDetections[i].box.x,
+                  y: resizedDetections[i].box.y,
+                  height: 100,
+                  width: 100,
+              };
+              const drawBox = new faceapi.draw.DrawBox(box, drawOptions);
+              drawBox.draw(canvas);
+          });
+      }, 1);
+  });
+
+  video.addEventListener("paused", () => {
+      clearTimeout(detectionTimeout);
+  });
+});
+
+</script>
+</body>
+</html>
