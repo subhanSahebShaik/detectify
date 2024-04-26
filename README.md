@@ -12,5 +12,16 @@ It only works if Git installed in your system, else download zip file manually f
 
 3. Now run,
 > pip install -r requirements.txt
+
 4. Now run server,
 > python manage.py runserver
+
+5. Now local server is ready. Open any browser and visit http://127.0.0.1:8000/
+
+# Special Thanks To
+
+I would like to express my special thanks to [abhijitjadhav1998/Deepfake_detection_using_deep_learning](https://github.com/abhijitjadhav1998/Deepfake_detection_using_deep_learning) repository for providing valuable insights and inspiration for this project. The code and ideas presented in this repository served as a foundation and guide for developing our deep learning-based method to detect AI-generated fake videos.
+
+---
+
+[![Original Repository](https://github.com/abhijitjadhav1998/Deepfake_detection_using_deep_learning)](https://github.com/abhijitjadhav1998/Deepfake_detection_using_deep_learning)
