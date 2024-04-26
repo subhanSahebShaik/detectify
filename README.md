@@ -7,6 +7,7 @@ The growing computation power has made the deep learning algorithms so powerful 
 1. Open Terminal or Command prompt from the location where you want to set the project.
 2. Now run the following command,
 > git clone https://github.com/subhanSahebShaik/detectify.git
+
 It only works if Git installed in your system, else download zip file manually from GitHub and extract it into desired location.
 3. Now run,
 > pip install -r requirements.txt
