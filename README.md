@@ -25,3 +25,4 @@ I would like to express my special thanks to [abhijitjadhav1998/Deepfake_detecti
 ---
 
 [![Original Repository](https://img.shields.io/badge/Original%20Repository-abhijitjadhav1998/Deepfake_detection_using_deep_learning-blue?logo=github)](https://github.com/abhijitjadhav1998/Deepfake_detection_using_deep_learning)
+@https://github.com/abhijitjadhav1998/Deepfake_detection_using_deep_learning
