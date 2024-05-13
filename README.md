@@ -10,6 +10,8 @@ The growing computation power has made the deep learning algorithms so powerful 
 
 It only works if Git installed in your system, else download zip file manually from GitHub and extract it into desired location.
 
+3. Create a 'models' directory at root folder and download the models from G-Drive to copy into that folder https://drive.google.com/drive/folders/1UX8jXUXyEjhLLZ38tcgOwGsZ6XFSLDJ-?usp=sharing
+
 3. Now run,
 > pip install -r requirements.txt
 
