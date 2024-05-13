@@ -10,15 +10,17 @@ The growing computation power has made the deep learning algorithms so powerful 
 
 It only works if Git installed in your system, else download zip file manually from GitHub and extract it into desired location.
 
-3. Create a 'models' directory at root folder and download the models from G-Drive to copy into that folder https://drive.google.com/drive/folders/1UX8jXUXyEjhLLZ38tcgOwGsZ6XFSLDJ-?usp=sharing
+3. Create a 'models', 'uplaoded_videos' and 'uploaded_images' directories at root folder.
 
-3. Now run,
+4. Now download the models from G-Drive then copy them into models folder created earlier https://drive.google.com/drive/folders/1UX8jXUXyEjhLLZ38tcgOwGsZ6XFSLDJ-?usp=sharing
+
+5. Now run,
 > pip install -r requirements.txt
 
-4. Now run server,
+6. Now run server,
 > python manage.py runserver
 
-5. Now local server is ready. Open any browser and visit http://127.0.0.1:8000/
+7. Now local server is ready. Open any browser and visit http://127.0.0.1:8000/
 
 # Special Thanks To
 
