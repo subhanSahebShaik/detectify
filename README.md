@@ -10,7 +10,7 @@ The growing computation power has made the deep learning algorithms so powerful 
 
 It only works if Git installed in your system, else download zip file manually from GitHub and extract it into desired location.
 
-3. Create a 'models', 'uplaoded_videos' and 'uploaded_images' directories at root folder.
+3. Create a 'models', 'uploaded_videos' and 'uploaded_images' directories at root folder.
 
 4. Now download the models from G-Drive then copy them into models folder created earlier https://drive.google.com/drive/folders/1UX8jXUXyEjhLLZ38tcgOwGsZ6XFSLDJ-?usp=sharing
 
