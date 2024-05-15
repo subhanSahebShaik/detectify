@@ -15,6 +15,12 @@ It only works if Git installed in your system, else download zip file manually f
 4. Now download the models from G-Drive then copy them into models folder created earlier https://drive.google.com/drive/folders/1UX8jXUXyEjhLLZ38tcgOwGsZ6XFSLDJ-?usp=sharing
 
 5. Now run,
+
+Creating Virtual evnironment is Optional but recommended
+> python -m venv venv
+> venv\Scripts activate
+
+Following command will install all project required libraries
 > pip install -r requirements.txt
 
 6. Now run server,
